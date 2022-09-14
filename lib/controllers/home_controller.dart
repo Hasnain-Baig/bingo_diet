@@ -150,14 +150,14 @@ class HomeController extends GetxController {
       while (!isDateExists(dt.toString().split(' ')[0])) {
         dt = _dateController.previousDate(dt);
       }
-      if (_dateController.compareStringDate(dt, DateTime.now())) {
+      if (_dateController.compareStringDate(dt, _dateController.nowDate)) {
         do {
           dt = _dateController.nextDate(dt);
           _mealList = [];
           _snacksList = [];
           _prizeMealList = [];
           await addDietRecord(dt.toString().split(' ')[0]);
-        } while (!_dateController.compareDates(dt, DateTime.now()));
+        } while (!_dateController.compareDates(dt, _dateController.nowDate));
       }
     } else {
       await addDietRecord(dt.toString().split(' ')[0]);
